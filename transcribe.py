@@ -1,8 +1,7 @@
 import whisper
-import ffmpeg
 
-model = whisper.load_model("base")
-path = "C:/Users/alejo/OneDrive/Escritorio/analisis-discurso/dowloads/audio.mp4"
-
-result = model.transcribe(path, fp16=False, verbose=True)
-print(result["text"])
+model = whisper.load_model("small")
+result = model.transcribe('tmp.mp4')
+print(result['text'])
+with open("transcript.txt", "w") as file:
+    file.write(result["text"])
